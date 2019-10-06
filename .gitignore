@@ -1,0 +1,6 @@
+.idea/
+core/__pycache__/
+data/glove/
+model/__pycache__/
+test/
+util/__pycache__/
