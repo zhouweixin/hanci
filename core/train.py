@@ -41,6 +41,7 @@ def train(model, train_loader, eval_loader=None, hyperparas=None, output_path=co
         train_mse_total = 0.
 
         start_time = time.time()
+        total_time = 0
         for i, (user_id, item_id, user_reviews, item_reviews, user_rids, item_rids, rating) in enumerate(train_loader):
             sys.stdout.write('\rtrain: %d / %d' % (i+1, len(train_loader)))
 
@@ -61,7 +62,11 @@ def train(model, train_loader, eval_loader=None, hyperparas=None, output_path=co
                 item_rids = Variable(item_rids)
                 rating = Variable(rating)
 
+            start_time = time.time()
             rating_pred, loss = model(user_id, item_id, user_reviews, item_reviews, user_rids, item_rids, rating, norm_lambda)
+            total_time += time.time() - start_time
+            # print()
+            # print((time.time() - start_time))
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()

@@ -18,7 +18,7 @@ hyperparas = {
 
     # common
     # 模型选择(注：SA表示self-attention, FA表示feature-attention)
-    'model': 'NARRE_LSTM_SA_SOA',  # NARRE, NARRE_FA, NARRE_SOA, NARRE_LSTM, NARRE_LSTM_SA, NARRE_LSTM_SA_SOA, NARRE_CNN_LSTM, NARRE_CNN_LSTM_SA
+    'model': 'HANCI',  # HANCI, NARRE_LSTM, NARRE
     'embedding_size': 300,
     'id_embedding_size': 32,
     'attention_size': 32,
@@ -29,7 +29,7 @@ hyperparas = {
     'batch_size': 100,
     'lr': 0.01,
     'norm_lambda': 0.1,
-    'weight_decay': 0.001,
+    'weight_decay': 0.002,
 
     # cnn
     'filter_sizes': [3],
@@ -37,14 +37,14 @@ hyperparas = {
 
     # lstm
     'hidden_size': 100,
-    'num_layers': 1,
+    'num_layers': 2,
     'bidirectional': True,
 
-    # self-attention
+    # word-level attention
     'da': 100,
     'r': 10,
 
-    # soft-attention
+    # feature-level attention
     'soa_size': 50,
 }
 

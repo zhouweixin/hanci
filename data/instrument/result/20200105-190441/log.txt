@@ -1,0 +1,24 @@
+=============hyperparas=============
+gpu: True
+is_eval: True
+model: HANCI
+embedding_size: 300
+id_embedding_size: 32
+attention_size: 32
+num_latent: 32
+dropout: 0.5
+num_epoches: 20
+batch_size: 100
+lr: 0.01
+norm_lambda: 0.1
+weight_decay: 0.002
+filter_sizes: [3]
+num_filters: 100
+hidden_size: 100
+num_layers: 2
+bidirectional: True
+da: 100
+r: 10
+soa_size: 50
+====================================
+

@@ -56,7 +56,7 @@ class NARRE_LSTM(nn.Module):
         self.user_bias.init_embedding_with_one(0.1)
         self.item_bias.init_embedding_with_one(0.1)
 
-    def forward(self, user_id, item_id, user_reviews, item_reviews, user_rids, item_rids, rating, norm_lambda=0.001, save_att=False):
+    def forward(self, input, norm_lambda=0.001, save_att=False):
         """
         :param save_att:
         :param user_id: [batch, 1]
@@ -68,6 +68,8 @@ class NARRE_LSTM(nn.Module):
         :param rating: [batch, 1]
         :return:
         """
+        user_id, item_id, user_reviews, item_reviews, user_rids, item_rids, rating = input
+
         # 1.word_embedding
         user_word_emb = self.user_word_emb(
             user_reviews)  # [batch, user_review_num, user_review_len, word_embedding_size]

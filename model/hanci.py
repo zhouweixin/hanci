@@ -11,7 +11,7 @@ from model.language import WordEmbedding, ReviewLSTMSA
 from model.attention import Attention, SoftAttention
 from util import utils
 
-
+import time
 class HANCI(nn.Module):
     """
     LSTM + self-attention 提取评论用户偏好和项目特征
@@ -63,7 +63,7 @@ class HANCI(nn.Module):
         self.user_bias.init_embedding_with_one(0.1)
         self.item_bias.init_embedding_with_one(0.1)
 
-    def forward(self, user_id, item_id, user_reviews, item_reviews, user_rids, item_rids, rating, norm_lambda=0.001, save_att=False):
+    def forward(self, input, norm_lambda=0.001, save_att=False):
         """
         :param user_id: [batch, 1]
         :param item_id: [batch, 1]
@@ -74,6 +74,13 @@ class HANCI(nn.Module):
         :param rating: [batch, 1]
         :return:
         """
+        user_id = input[0]
+        item_id = input[1]
+        user_reviews = input[2]
+        item_reviews = input[3]
+        user_rids = input[4]
+        item_rids = input[5]
+        rating = input[6]
         # 1.word_embedding
         user_word_emb = self.user_word_emb(
             user_reviews)  # [batch, user_review_num, user_review_len, word_embedding_size]
@@ -81,8 +88,11 @@ class HANCI(nn.Module):
             item_reviews)  # [batch, item_review_num, item_review_len, word_embedding_size]
 
         # 2.review_embedding, word-level attention
+        start_time = time.time()
         user_reviews_emb,user_word_att = self.user_review_emb(user_word_emb)  # [batch, review_num, review_hidden_size], # [batch, review_num, review_len]
         item_reviews_emb,item_word_att = self.item_review_emb(item_word_emb)  # [batch, review_num, review_hidden_size], # [batch, review_num, review_len]
+        print()
+        print(time.time() - start_time)
 
         # 3.id_embedding
         user_id_emb = self.user_id_emb(user_id)  # [batch, 1, id_embedding_size]
