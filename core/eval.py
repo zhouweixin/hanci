@@ -18,7 +18,7 @@ hyperparas = {
 
     # common
     # 模型选择(注：SA表示self-attention, FA表示feature-attention)
-    'model': 'NARRE_LSTM_SA_SOA',  # NARRE, NARRE_FA, NARRE_SOA, NARRE_LSTM, NARRE_LSTM_SA, NARRE_LSTM_SA_SOA, NARRE_CNN_LSTM, NARRE_CNN_LSTM_SA
+    'model': 'HANCI',  # NARRE, NARRE_FA, NARRE_SOA, NARRE_LSTM, NARRE_LSTM_SA, NARRE_LSTM_SA_SOA, NARRE_CNN_LSTM, NARRE_CNN_LSTM_SA
     'embedding_size': 300,
     'id_embedding_size': 32,
     'attention_size': 32,
@@ -66,5 +66,5 @@ model.train(False)
 # train(model, train_loader, val_loader, hyperparas)
 model = model.cuda()
 val_mse, val_rmse = evaluate(model, test_loader, True, save_att=True)
-print(val_rmse)
+print('%.6f' % val_rmse)
 

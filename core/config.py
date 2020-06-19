@@ -9,7 +9,7 @@ import os
 import time
 
 # 切换数据类型
-data_type = 'instrument'
+data_type = 'toy_game'
 
 assert data_type in ['kindle', 'movie', 'instrument', 'toy_game', 'music', 'yelp']
 
@@ -30,7 +30,7 @@ data_type2data_file = {
 }
 
 # 数据根路径
-data_root = '../data'
+data_root = '../../narre_all_data'
 # 数据源文件
 data_file = data_type2data_file[data_type]
 # 数据全路径
