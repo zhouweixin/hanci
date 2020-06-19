@@ -9,7 +9,7 @@ import os
 import time
 
 # 切换数据类型
-data_type = 'toy_game'
+data_type = 'kindle'
 
 assert data_type in ['kindle', 'movie', 'instrument', 'toy_game', 'music', 'yelp']
 

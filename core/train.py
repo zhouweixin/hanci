@@ -122,7 +122,7 @@ def evaluate(model, eval_loader, gpu, save_att=False):
         total_mse += mse.item() * rating.size(0)
     mse = total_mse / len(eval_loader.dataset)
     rmse = np.sqrt(mse)
-    return mse, rmse - 0.000398
+    return mse, rmse
 
 
 class MyLoss(nn.Module):

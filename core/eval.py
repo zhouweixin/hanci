@@ -59,7 +59,7 @@ train_loader = DataLoader(train_dset, batch_size=hyperparas['batch_size'], shuff
 test_loader = DataLoader(test_dset, batch_size=hyperparas['batch_size'], shuffle=True)
 constructor = 'build_' + hyperparas['model']
 
-model_path = '../../narre_all_data/toy_game/result/narre-lstm-sa-soa-0.8513/model.pth'
+model_path = '../../narre_all_data/kindle/result/20190325-211622/model.pth'
 model = getattr(build_model, constructor)(train_dset, hyperparas)
 model.load_state_dict(torch.load(model_path))
 model.train(False)
